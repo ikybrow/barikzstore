@@ -1,0 +1,124 @@
+<!DOCTYPE html><html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Web Interaktif</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: black;
+      color: white;
+      overflow: hidden;
+    }
+    .loading {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: black;
+      animation: fadeOut 2s ease forwards;
+      animation-delay: 2s;
+    }
+    .loading span {
+      font-size: 2em;
+      animation: pulse 1s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
+    }
+    @keyframes fadeOut {
+      to { opacity: 0; visibility: hidden; }
+    }
+    .hidden { display: none; }
+    .container {
+      padding: 20px;
+      display: none;
+      animation: fadeIn 1s ease forwards;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    .menu {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 20px;
+    }
+    .menu button {
+      padding: 10px;
+      background: #333;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .menu button:hover {
+      background: #555;
+    }
+    .wa-contact {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: green;
+      color: white;
+      padding: 10px 15px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: bold;
+      box-shadow: 0 0 10px rgba(0,255,0,0.7);
+      transition: transform 0.3s;
+    }
+    .wa-contact:hover {
+      transform: scale(1.1);
+    }
+  </style>
+</head>
+<body>
+  <div class="loading" id="loading">
+    <span>Loading...</span>
+  </div>  <div class="container" id="registerForm">
+    <h2>Registrasi</h2>
+    <input type="text" id="username" placeholder="Masukkan nama Anda" style="padding:10px;width:100%;max-width:300px;" />
+    <br><br>
+    <button onclick="submitForm()">Daftar</button>
+  </div>  <div class="container" id="welcome" style="display:none;">
+    <h2 id="greeting"></h2>
+    <div class="menu">
+      <button onclick="alert('Jika ingin melihat pamflet,Hubungi contact owner')">Menu suntik sosmed</button>
+      <button onclick="alert('ᴘᴀᴋᴇᴛ ꜱᴇᴡᴀ  :
+   - 1 ᴍɪɴɢɢᴜ - ʀᴘ 5.000
+   - 3 ᴍɪɴɢɢᴜ - ʀᴘ 15.000
+   - 1 ʙᴜʟᴀɴ - ʀᴘ 20.000
+   - 2 ʙᴜʟᴀɴ - ʀᴘ 35.000
+   - 3 ʙᴜʟᴀɴ - ʀᴘ 50.000
+
+✦ _ᴛɪᴅᴀᴋ ᴍᴇʟᴀʏᴀɴɪ ꜱᴇᴡᴀ ᴘᴇʀᴍᴀɴᴇɴᴛ_')">Menu sewa bot</button>
+      <button onclick="alert('Menu 3 diklik')">Menu 3</button>
+    </div>
+  </div><a class="wa-contact" href="https://wa.me/6282141903060?text=assalamu'alaikum+bang" target="_blank">Kontak Owner</a>
+
+  <script>
+    // Setelah loading selesai, tampilkan form registrasi
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        document.getElementById('loading').style.display = 'none';
+        document.getElementById('registerForm').style.display = 'block';
+      }, 2500);
+    });
+
+    function submitForm() {
+      const name = document.getElementById('username').value;
+      if (name.trim() === '') {
+        alert('Nama tidak boleh kosong!');
+        return;
+      }
+      document.getElementById('registerForm').style.display = 'none';
+      document.getElementById('welcome').style.display = 'block';
+      document.getElementById('greeting').innerText = `Selamat datang, ${name}!`;
+    }
+  </script></body>
+</html>
